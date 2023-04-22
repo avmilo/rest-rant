@@ -1,3 +1,7 @@
+// dotenv required
+require('dotenv').config()
+
+//express required
 const express = require('express')
 const app = express()
 
@@ -5,4 +9,10 @@ app.get('/', (req, res) => {
     res.send("Hello World !")
 })
 
-app.listen(3000)
+app.get('*', (req, res) =>{
+    res.status(404).send('<h1> 404 Page </h1>')
+})
+
+//listening to connections in .env file
+app.listen(process.env.PORT)
+
